@@ -1,0 +1,11 @@
+asgiref==3.8.1
+Django==5.1.1
+django-extensions==3.2.3
+django-markdown-model==1.0
+django-rest-framework==0.1.0
+djangorestframework==3.15.2
+drf-extensions==0.7.1
+drf-nested-routers==0.94.1
+Markdown==3.7
+python-dotenv==1.0.1
+sqlparse==0.5.1
