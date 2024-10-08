@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if template_style != "tailwind" %}
+{% include 'quick_docs_drf/bootstrap-documentation.html' %}
+{% else %}
+{% include 'quick_docs_drf/tailwind-documentation.html' %}
+{% endif %}
+
+{% endblock content %}

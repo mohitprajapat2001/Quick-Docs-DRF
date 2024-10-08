@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quick Docs DRF</title>
+    {% if template_style != "tailwind" %}
+    {% include 'quick_docs_drf/bootstrap.html' %}
+    {% else %}
+    {% include 'quick_docs_drf/tailwind.html' %}
+    {% endif %}
+</head>
+
+<body data-bs-theme="dark">
+    {% block content %}
+    {% endblock content %}
+
+</body>
+
+
+</html>

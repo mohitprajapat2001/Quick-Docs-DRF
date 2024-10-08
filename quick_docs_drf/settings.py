@@ -30,8 +30,9 @@ DEFAULT = {
     "BASE_ROUTER_NAME": quick_docs_drf_configuration("BASE_ROUTER_NAME") or "router",
     "NESTED_ROUTER_NAME": quick_docs_drf_configuration("NESTED_ROUTER_NAME") or None,
     "CONTRIBUTION": True,
-    "CONTACT_SECTION": True,
-    "SOCIAL_SECTION": True,
+    "TEMPLATE_STYLE": quick_docs_drf_configuration("TEMPLATE_STYLE") or "bootstrap5",
+    "CONTACT_SECTION": False,
+    "SOCIAL_SECTION": False,
     "CONTACT": {
         "name": quick_docs_drf_configuration("CONTACT_NAME") or None,
         "email": quick_docs_drf_configuration("CONTACT_EMAIL") or None,
