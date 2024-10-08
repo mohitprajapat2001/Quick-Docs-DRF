@@ -20,8 +20,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",
+    "quick_docs",
+    "quick_docs_drf",
+    "rest_framework",
+    "rest_framework_extensions",
+    "rest_framework_nested",
 ]
-
+# Middlewares
+# ------------------------------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -112,3 +119,30 @@ MEDIA_ROOT = join(BASE_DIR, Settings.MEDIA_ROOT.value)
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = Settings.DEFAULT_AUTO_FIELD.value
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 100,
+}
+
+# Quick Docs DRF Configuration
+QUICK_DOCS_DRF = {
+    "TITLE": "Quick Docs DRF",
+    "DESCRIPTION": "Quick Docs DRF is a simple and easy-to-use documentation generator for Django REST Framework.",
+    "VERSION": "1.0.0",
+    "AUTHOR": "Mohit Prajapat",
+    "LICENSE": "MIT",
+    "API_URL": "/api/",
+    "API_VERSION": "v1",
+    "API_PREFIX": "api",
+    "API_DESCRIPTION": "Quick Docs DRF API",
+    "API_LICENSE": "MIT",
+    "BASE_URL": "quick_docs.urls",
+    "BASE_ROUTER_NAME": "router",
+}
