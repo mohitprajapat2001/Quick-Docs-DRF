@@ -10,6 +10,44 @@ Quick Docs DRF is a tool for generating `documentation` for `Django REST Framewo
 - Multiple UI templates (Tailwind CSS, Bootstrap).
 - Global project settings for easy configuration.
 
+## Default Settings
+
+Here is Deafult Setting Configuration:
+
+```python
+DEFAULT = {
+    "PROJECT_NAME": None,
+    "PROJECT_DESCRIPTION": None,
+    "VERSION": 1.0,
+    "AUTHOR": None,
+    "AUTHOR_EMAIL": None,
+    "LICENSE": "MIT",
+    "API_URL": "/api/",
+    "API_VERSION": "v1",
+    "API_PREFIX": "api",
+    "BASE_URL":  None,
+    "BASE_ROUTER_NAME": "router",
+    "NESTED_ROUTER_NAME": None,
+    "CONTRIBUTION": True,
+    "CONTACT_SECTION": True,
+    "SOCIAL_SECTION": True,
+    "CONTACT": {
+        "name":  None,
+        "email":  None,
+        "url":  None,
+    },
+    "SOCIAL": {
+        "github": None,
+        "twitter": None,
+        "linkedin": None,
+        "facebook": None,
+        "instagram": None,
+        "youtube": None,
+        "medium": None,
+    },
+}
+```
+
 ## Installation
 
 To install Quick Docs DRF, run the following command:
