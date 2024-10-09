@@ -144,6 +144,7 @@ QUICK_DOCS_DRF = {
     "API_DESCRIPTION": "Quick Docs DRF API",
     "API_LICENSE": "MIT",
     "BASE_URL": "quick_docs.urls",
-    "BASE_ROUTER_NAME": "router",
+    "BASE_ROUTER_NAME": "quick_docs.urls.router",
+    "VIEWSET_LISTS": ["quick_docs.views.BlogViewSet", "quick_docs.views.UserViewSet"],
     "TEMPLATE_STYLE": "tailwind",
 }

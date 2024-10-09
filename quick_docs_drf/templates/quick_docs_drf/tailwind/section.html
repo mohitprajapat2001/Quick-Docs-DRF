@@ -1,0 +1,92 @@
+<header class="text-start mb-6" id="introduction">
+    <h1 class="text-4xl font-bold">{{project_name}}</h1>
+    <p class="my-5 text-lg">{{project_description}}</p>
+</header>
+<section id="products" class="mb-5">
+    <h2 class="text-2xl font-semibold my-5">Products API Endpoints</h2>
+    <p class="text-xl font-semibold my-5">Get All Products</p>
+    <div role="tablist" class="tabs tabs-boxed">
+        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Fetch" />
+        <div role="tabpanel" class="tab-content p-10">
+            <div class="mockup-window w-11/12 bg-base-300 border">
+                <div class="bg-base-200 px-4 py-16">
+                    <div class="mockup-code overflow-auto">
+                        <pre><code>let headers = new Headers();
+    headers.append('Authorization', 
+        'Basic ' + base64.encode(username + ":" + password));
+    fetch('/api/products/', {method:'GET',
+    headers: headers,
+    })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+                                        </code></pre>
+                    </div>
+                    <br>
+                    <div class="mockup-code  overflow-auto">
+                        <pre data-prefix="#"><code>Response</code></pre>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Ajax" />
+        <div role="tabpanel" class="tab-content p-10">
+            <div class="mockup-window w-11/12 bg-base-300 border">
+                <div class="bg-base-200 px-4 py-16">
+                    <div class="mockup-code overflow-auto">
+                        <pre><code>$.ajax({
+    url: "/api/products/",
+    type: "GET",
+    headers: {
+        "X-CSRFToken": csrfToken,
+        Authorization: "Basic " + btoa(USERNAME + ":" + PASSWORD),
+    },
+    success: function (response, status, xhr) {
+        console.log(response);
+    },
+    error: function (xhr, status, error) {
+        console.error("Error occurred:", xhr.responseText, status, error);
+    },
+    });
+                                                    </code></pre>
+                    </div>
+                    <br>
+                    <div class="mockup-code overflow-auto">
+                        <pre data-prefix="#"><code>Response</code></pre>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Python" />
+        <div role="tabpanel" class="tab-content p-10">
+            <div class="mockup-window w-11/12 bg-base-300 border">
+                <div class="bg-base-200 px-4 py-16">
+                    <div class="mockup-code overflow-auto">
+                        <pre><code>from requests import get
+    response = get("http://url.domain/api/products/", 
+        auth=(USERNAME, PASSWORD))
+    print(response.status_code)
+    print(response.json())
+                                                                </code></pre>
+                    </div>
+                    <br>
+                    <div class="mockup-code overflow-auto">
+                        <pre data-prefix="#"><code>Response</code></pre>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="pagination" class="mb-5">
+    <h2 class="text-2xl font-semibold my-5">Pagination</h2>
+    <p class="my-5">Products data are paginated & can be handled by sending page number as query parameter
+    </p>
+    <p class="kbd">GET: /api/products/?page={number}</p>
+    <p class="my-5">This will fetch the first page of products, limited to 10 items.</p>
+</section>

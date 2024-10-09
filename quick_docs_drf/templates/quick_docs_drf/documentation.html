@@ -1,11 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
 
+{% block css %}
 {% if template_style != "tailwind" %}
-{% include 'quick_docs_drf/bootstrap-documentation.html' %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 {% else %}
-{% include 'quick_docs_drf/tailwind-documentation.html' %}
+<link rel="stylesheet" href="{% static 'css/daisy.css' %}">
 {% endif %}
+{% endblock %}
 
-{% endblock content %}
+
+{% block content %}
+{% if template_style != "tailwind" %}
+{% include 'quick_docs_drf/bootstrap.html' %}
+{% else %}
+{% include 'quick_docs_drf/tailwind.html' %}
+{% endif %}
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/jQuery.js' %}"></script>
+{% if template_style != "tailwind" %}
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap-theme.js' %}"></script>
+{% else %}
+<script src="{% static 'js/tailwind.js' %}"></script>
+<script src="{% static 'js/tailwind-theme.js' %}"></script>
+{% endif %}
+{% endblock %}

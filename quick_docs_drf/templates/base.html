@@ -6,18 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quick Docs DRF</title>
-    {% if template_style != "tailwind" %}
-    {% include 'quick_docs_drf/bootstrap.html' %}
-    {% else %}
-    {% include 'quick_docs_drf/tailwind.html' %}
-    {% endif %}
+    {% block css %}{% endblock %}
 </head>
 
-<body data-bs-theme="dark">
+<body data-bs-theme="light" data-theme="dark">
     {% block content %}
     {% endblock content %}
 
 </body>
-
+<script src="{% static 'js/docs-requests.js' %}"></script>
+<script src="{% static 'js/docs-utils.js' %}"></script>
+{% block js %}{% endblock %}
 
 </html>
