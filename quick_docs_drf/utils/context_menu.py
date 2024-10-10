@@ -6,6 +6,7 @@ from django.utils.module_loading import import_string
 
 def context_menu():
     """generate context menu data"""
+
     APP_NAME = set()
     MENU_CONTEXT = []
     base_router = DEFAULT.get("BASE_ROUTER_NAME")
@@ -48,7 +49,7 @@ def viewset_context():
         viewset = import_string(viewset)
         VIEWSETS_CONTEXT.append(
             {
-                "name": viewset.queryset.model.__name__,
+                "name": viewset.__name__,
                 "docs": viewset.__doc__,
                 "serializer_class": viewset.serializer_class.__name__,
                 "fields": viewset.serializer_class.Meta.fields,

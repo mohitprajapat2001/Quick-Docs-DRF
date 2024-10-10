@@ -22,7 +22,7 @@
                                 {% for context in viewset_context%}
                                 <a href="#{{context.name}}"
                                     class="list-group-item list-group-item-action text-uppercase">
-                                    {{context.serializer_class}}
+                                    {{context.name}}
                                 </a>
                                 {% endfor %}
                             </ul>

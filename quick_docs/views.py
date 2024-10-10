@@ -19,3 +19,14 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
+
+
+class NewUserViewSet(viewsets.GenericViewSet):
+    """New User Generic Viewset"""
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.AllowAny]
+    throttle_classes = [throttling.AnonRateThrottle]
+    authentication_classes = []
+    lookup_field = "username"

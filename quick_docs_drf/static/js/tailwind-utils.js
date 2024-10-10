@@ -15,7 +15,7 @@ function triggerAlert(body) {
   </svg>
   <span>${body}</span>
   <div>
-    <button class="btn btn-sm btn-ghost transition scale-95 hover:scale-100 hover:rotate-90 delay-50 duration-150 rounded-circle" onclick="hideAlert()">x</button>
+    <button class="btn btn-sm btn-circle btn-ghost scale:95 hover:scale:100 transition hover:rotate-90 delay-50 duration-200" onclick="hideAlert()">✕</button>
   </div></div>`;
   alertToast.innerHTML = context;
   setTimeout(() => {

@@ -102,13 +102,17 @@
     <div class="card-body">
         <h2 class="card-title">{{content.model}}</h2>
         <p class="card-text">{{content.docs}}</p>
-        <p>
+        <div>
             {% if "-detail" in content.app_name %}
             endpoint: <code class="kbd text-secondary">{% url content.app_name 1 %}</code>
             {%else%}
             endpoint: <code class="kbd text-secondary">{% url content.app_name %}</code>
             {% endif %}
-        </p>
+
+        </div>
+        {%for action in content.app_actions%}
+        <p class="bg-base-300 p-3 rounded-md">{{action}}</p>
+        {%endfor%}
     </div>
     {% else %}
     <div class="card-body">

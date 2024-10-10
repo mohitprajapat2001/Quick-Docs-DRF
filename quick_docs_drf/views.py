@@ -7,8 +7,10 @@ class DocumentationView(TemplateView):
     template_name = "quick_docs_drf/documentation.html"
 
     def get_context_data(self, **kwargs) -> dict[str, Any]:
-        context = super().get_context_data(**kwargs)
-        context = context | context_utils.generate_documentation_page_context_data(self)
+        context = super().get_context_data(
+            **kwargs
+        ) | context_utils.generate_documentation_page_context_data(self)
+
         return context
 
 
