@@ -13,8 +13,24 @@
         </div>
     </div>
 </nav>
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-top border-bottom">
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-top">
     <div class="container-fluid justify-content-center align-items-center justify-content-md-between">
         <p class="text-muted mb-1 mt-1 mx-3">{{project_description}}</p>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+    <div class="d-flex">
+        {%if project_version%}
+        <span class="badge text-bg-info ms-3">{{project_version}}
+        </span>
+        {%endif%}
+        {%if project_author%}
+        <span class="badge text-bg-info ms-3">{{project_author}}
+        </span>
+        {%endif%}
+        {%if api_url%}
+        <span class="badge text-bg-info ms-3">{{api_url}}
+        </span>
+        {%endif%}
     </div>
 </nav>

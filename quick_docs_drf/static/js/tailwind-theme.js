@@ -2,9 +2,6 @@
 const body = document.querySelector("body");
 const themeSelect = document.getElementById("themeSelect");
 document.addEventListener("DOMContentLoaded", () => {
-  themeSelect.addEventListener("change", () => {
-    alert();
-  });
   $("#themeSelect").change((event) => {
     event.preventDefault();
     const currentTheme = event.target.value;

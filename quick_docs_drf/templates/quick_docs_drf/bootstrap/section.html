@@ -77,7 +77,6 @@
         </div>
     </div>
     {% endfor %}
-    {{menu_context}}
     {% for content in menu_context %}
     <!-- Jumbotron -->
     <div class="p-4 shadow-4 rounded mb-3 border" id="{{content.app_name}}">
@@ -125,6 +124,35 @@
         </p>
         {%endif%}
     </div>
-    <!-- Jumbotron -->
     {%endfor%}
+    {% if project_author_email %}
+    <div class="p-4 shadow-4 rounded mb-3 border" id="contact">
+        <h2>Contact</h2>
+        For any questions, please reach out to our support team at
+        <code>
+            <a href="mailto:{{project_author_email}}" class="text-decoration-none">
+                {{project_author_email}}
+            </a>
+        </code>
+    </div>
+    {% endif %}
+    {% if project_repository %}
+    <div class="p-4 shadow-4 rounded mb-3 border" id="contributions">
+        <h2>
+            Contributions
+        </h2>
+        We welcome contributions! Please check our GitHub repository for more information.
+        <code>
+                {{project_repository}}
+        </code>
+    </div>
+    {%endif%}
+    {% if project_license %}
+    <div class="p-4 shadow-4 rounded mb-3 border" id="license">
+        <h2>
+            License
+        </h2>
+        This API is licensed under the <code>{{project_license}}</code> License. See the LICENSE file for more details.
+    </div>
+    {%endif%}
 </div>

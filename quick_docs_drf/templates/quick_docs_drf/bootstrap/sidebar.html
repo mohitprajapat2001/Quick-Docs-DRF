@@ -5,31 +5,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#documentationMenu"
             aria-label="Close"></button>
     </div>
-    <div class="mt-3">
+    <div class="mt-3 overflow-auto" style="height: 100vh;scrollbar-width:none">
         <div class="list-group list-group-flush">
             <div class="accordion" id="accordionExample">
                 {% if viewset_context %}
-                {% for context in viewset_context%}
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#viewsets" aria-controls="viewsets"
-                            aria-expanded="false">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#viewsets" aria-controls="viewsets" aria-expanded="false">
                             Available Viewsets Details
                         </button>
                     </h2>
-                    <div id="viewsets" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}">
+                    <div id="viewsets" class="accordion-collapse collapse show">
                         <div class="accordion-body">
                             <ul class="list-group">
-                                <a href=""
+                                {% for context in viewset_context%}
+                                <a href="#{{context.name}}"
                                     class="list-group-item list-group-item-action text-uppercase">
-                                    
+                                    {{context.serializer_class}}
                                 </a>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
                 {% endif %}
                 {% for context in menu_context %}
                 {% if context.app_name == "api-root" %}
@@ -56,10 +55,10 @@
                 {%else%}
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#{{forloop.counter}}"
+                        <button class="accordion-button text-capitalize {% if not forloop.first %}collapsed{% endif %}"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#{{forloop.counter}}"
                             aria-controls="{{forloop.counter}}" aria-expanded="false">
-                            {{context.model}}
+                            {{context.model}} - {{context.app_name}}
                         </button>
                     </h2>
                     <div id="{{forloop.counter}}"
@@ -76,6 +75,36 @@
                 </div>
                 {%endif%}
                 {% endfor %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#extras" aria-controls="extras" aria-expanded="false">
+                            Extras
+                        </button>
+                    </h2>
+                    <div id="extras" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}">
+                        <div class="accordion-body">
+                            <ul class="list-group">
+                                {% if project_author_email %}
+                                <a class="list-group-item list-group-item-action text-uppercase" href="#contact">
+                                    Contact
+                                </a>
+                                {% endif %}
+                                {% if project_repository %}
+                                <a class="list-group-item border rounded list-group-item-action text-uppercase"
+                                    href="#contributions">
+                                    Contributions
+                                </a>
+                                {%endif%}
+                                {% if project_license %}
+                                <a class="list-group-item list-group-item-action text-uppercase" href="#license">
+                                    License
+                                </a>
+                                {%endif%}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, throttling
 from quick_docs.serializers import BlogSerializer, UserSerializer
 from quick_docs.models import Blog
 from django.contrib.auth.models import User
@@ -11,6 +11,7 @@ class BlogViewSet(viewsets.ModelViewSet):
     serializer_class = BlogSerializer
     permission_classes = [permissions.AllowAny]
     lookup_field = "slug"
+    throttle_classes = [throttling.AnonRateThrottle]
 
 
 class UserViewSet(viewsets.ModelViewSet):

@@ -2,7 +2,7 @@
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
     <div class="drawer-side overflow-auto" style="scrollbar-width: none;">
         <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-base-200 rounded-box w-56">
+        <ul class="menu bg-base-200 min-h-screen rounded-box w-56">
             <li><a href="#introduction">Introduction</a></li>
             <li>
                 <details open>
@@ -16,51 +16,48 @@
                     </ul>
                 </details>
             </li>
+            {% for context in menu_context %}
+            {% if context.app_name == "api-root" %}
             <li>
                 <details close>
-                    <summary>Category</summary>
+                    <summary>{{context.name}} Endpoints</summary>
                     <ul>
-                        <li><a href="#categories">Get All Categories</a></li>
-                        <li><a href="#category">Retreive Category</a></li>
+                        <li>
+                            <a href="#{{context.app_name}}">GET
+                                <code class="text-secondary kbd">
+                                {% url context.app_name %}
+                            </code>
+                            </a>
+                        </li>
                     </ul>
                 </details>
             </li>
+            {%else%}
             <li>
                 <details close>
-                    <summary>Cart</summary>
+                    <summary>{{context.model}} - {{context.app_name}}</summary>
                     <ul>
-                        <li><a href="#carts">Get All Carts</a></li>
-                        <li><a href="#cart">Retreive Cart</a></li>
-                        <li><a href="#cart-product-create">Add Product</a></li>
-                        <li><a href="#cart-product-remove">Remove Product</a></li>
+                        {% for action in context.app_actions %}
+                        <li>
+                            <a href="#{{context.app_name}}">
+                                {{action}}
+                            </a>
+                        </li>
+                        {% endfor %}
                     </ul>
                 </details>
             </li>
-            <li>
-                <details close>
-                    <summary>Wishlist</summary>
-                    <ul>
-                        <li><a href="#wishlists">Get All Wishlists</a></li>
-                        <li><a href="#wishlist">Retreive Wishlist</a></li>
-                        <li><a href="#wishlist-product-create">Add Product</a></li>
-                        <li><a href="#wishlist-product-remove">Remove Product</a></li>
-                    </ul>
-                </details>
-            </li>
-            <li>
-                <details close>
-                    <summary>Order</summary>
-                    <ul>
-                        <li><a href="#orders">Get All Order</a></li>
-                        <li><a href="#create-order">Create Order</a></li>
-                        <li><a href="#order">Retreive Order</a></li>
-                        <li><a href="#update-order">Update Order</a></li>
-                    </ul>
-                </details>
-            </li>
+            {%endif%}
+            {% endfor %}
+            {% if project_author_email %}
             <li><a href="#contact">Contact</a></li>
+            {%endif%}
+            {% if project_repository %}
             <li><a href="#contributions">Contributions</a></li>
+            {%endif%}
+            {% if project_license %}
             <li><a href="#license">License</a></li>
+            {%endif%}
         </ul>
     </div>
 </div>
