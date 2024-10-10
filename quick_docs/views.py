@@ -9,8 +9,7 @@ class BlogViewSet(viewsets.ModelViewSet):
 
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
-    permission_classes = [permissions.AllowAny]
-    lookup_field = "slug"
+    permission_classes = [permissions.IsAuthenticated]
     throttle_classes = [throttling.AnonRateThrottle]
 
 

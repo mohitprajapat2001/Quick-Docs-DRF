@@ -128,7 +128,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny",
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 100,
+    "PAGE_SIZE": 10,
 }
 
 # Quick Docs DRF Configuration
@@ -142,7 +142,7 @@ QUICK_DOCS_DRF = {
     "BASE_URL": "quick_docs.urls",
     "BASE_ROUTER_NAME": "quick_docs.urls.router",
     "VIEWSET_LISTS": ["quick_docs.views.BlogViewSet", "quick_docs.views.UserViewSet"],
-    "TEMPLATE_STYLE": "tailwind",
+    # "TEMPLATE_STYLE": "tailwind",
     "SOCIAL_MEDIA": {
         "FACEBOOK": "itsmohit.codes",
         "INSTAGRAM": "itsmohit.codes",

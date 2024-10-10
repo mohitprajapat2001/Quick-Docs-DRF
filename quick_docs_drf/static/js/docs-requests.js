@@ -1,9 +1,10 @@
-function getRequest(url, data, callback) {
+function docsGetRequest(url, callBack, errorHandle) {
   /* Standart Get Request Function */
-  ajaxRequest("GET", url, data, callback);
+  docsAjaxRequest("GET", url, null, callBack, errorHandle);
 }
 
-function ajaxRequest(type, url, data, callback) {
+function docsAjaxRequest(type, url, data, callBack, errorHandle) {
+  const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]").value;
   /*Standart Ajax Request Function */
   $.ajax({
     url: url,
@@ -13,16 +14,17 @@ function ajaxRequest(type, url, data, callback) {
       "X-CSRFToken": csrfToken,
     },
     success: function (response, status, xhr) {
-      //   console.log(response);
-      //   console.log(xhr);
       if (xhr.status != 204) {
-        if (callback) {
-          callback(response);
+        if (callBack) {
+          callBack(xhr);
         }
       }
     },
     error: function (xhr, status, error) {
       console.error("Error occurred:", xhr.responseText, status, error);
+      if (errorHandle) {
+        errorHandle(xhr);
+      }
     },
   });
 }

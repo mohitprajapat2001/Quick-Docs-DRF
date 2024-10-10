@@ -16,35 +16,18 @@ Here is Deafult Setting Configuration:
 
 ```python
 DEFAULT = {
-    "PROJECT_NAME": None,
-    "PROJECT_DESCRIPTION": None,
+    "TITLE": "Documentation",
+    "DESCRIPTION": "Project Description Not Available",
     "VERSION": 1.0,
     "AUTHOR": None,
     "AUTHOR_EMAIL": None,
     "LICENSE": "MIT",
     "API_URL": "/api/",
-    "API_VERSION": "v1",
-    "API_PREFIX": "api",
-    "BASE_URL":  None,
-    "BASE_ROUTER_NAME": "router",
+    "BASE_ROUTER_NAME": None,
     "NESTED_ROUTER_NAME": None,
-    "CONTRIBUTION": True,
-    "CONTACT_SECTION": True,
-    "SOCIAL_SECTION": True,
-    "CONTACT": {
-        "name":  None,
-        "email":  None,
-        "url":  None,
-    },
-    "SOCIAL": {
-        "github": None,
-        "twitter": None,
-        "linkedin": None,
-        "facebook": None,
-        "instagram": None,
-        "youtube": None,
-        "medium": None,
-    },
+    "VIEWSET_LISTS": None,
+    "TEMPLATE_STYLE": "bootstrap5",
+    "SOCIAL_MEDIA_HANDLES": None, # Available options: ["FACEBOOK", "GITHUB", "INSTAGRAM", "LINKEDIN", "X"]
 }
 ```
 

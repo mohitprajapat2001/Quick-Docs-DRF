@@ -10,6 +10,7 @@
 </head>
 
 <body data-bs-theme="light" data-theme="dark">
+    {% csrf_token %}
     {% block content %}
     {% endblock content %}
 
