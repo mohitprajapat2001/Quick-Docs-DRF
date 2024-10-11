@@ -84,29 +84,47 @@
         <h2>{{content.model}}</h2>
         <p>{{content.docs}}</p>
         <p>
+            <button type="button" class="btn btn-primary btn-sm me-2 text-capitalize copy-link-btn"
+                onclick="copyToClipboard(this)">
+                Copy Link
+            </button>
+            <code class="api-link">
             {% if "-detail" in content.app_name %}
-            endpoint: <code>{% url content.app_name 1 %}</code>
-            {%else%}
-            endpoint: <code>{% url content.app_name %}</code>
-            {% endif %}
+                {% url content.app_name 1 %}
+                {%else%}
+                {% url content.app_name %}
+                {% endif %}
+            </code>
         </p>
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 {% for app in content.app_actions %}
-                <button class="nav-link text-capitalize {% if forloop.first %}active{%endif%}" id="nav-{{app}}-tab"
-                    data-bs-toggle="tab" data-bs-target="#nav-{{app}}" type="button" role="tab"
-                    aria-controls="nav-{{app}}" aria-selected="true">{{app}}</button>
+                <button class="nav-link text-capitalize {% if forloop.first %}active{%endif%}"
+                    id="nav-{{content.app_name}}-{{app}}-tab" data-bs-toggle="tab"
+                    data-bs-target="#nav-{{content.app_name}}-{{app}}" type="button" role="tab"
+                    aria-controls="nav-{{content.app_name}}-{{app}}" aria-selected="true">{{app}}</button>
                 {% endfor %}
             </div>
         </nav>
+        {{content}}
         <div class="tab-content" id="nav-tabContent">
             {% for app in content.app_actions %}
-            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="nav-{{app}}" role="tabpanel"
-                aria-labelledby="nav-{{app}}-tab" tabindex="0">
+            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}"
+                id="nav-{{content.app_name}}-{{app}}" role="tabpanel"
+                aria-labelledby="nav-{{content.app_name}}-{{app}}-tab" tabindex="0">
                 <div class="card card-body mt-3">
                     {% if app == 'list' %}
-                    {%else%}
-                    Other Methods
+                    {% include 'quick_docs_drf/bootstrap/url-info.html' %}
+                    {%elif app == 'create' %}
+                    {% include 'quick_docs_drf/bootstrap/url-info.html' %}
+                    {%elif app == 'retrieve' %}
+                    {% include 'quick_docs_drf/bootstrap/url-info.html' %}
+                    {%elif app == 'update' %}
+                    {% include 'quick_docs_drf/bootstrap/url-info.html' %}
+                    {%elif app == 'partial_update' %}
+                    {% include 'quick_docs_drf/bootstrap/url-info.html' %}
+                    {%elif app == 'destroy' %}
+                    {% include 'quick_docs_drf/bootstrap/url-info.html' %}
                     {%endif%}
                 </div>
             </div>
@@ -116,11 +134,16 @@
         <h2>{{content.name}}</h2>
         <p>{{content.docs}}</p>
         <p>
-            {% if "-detail" in content.app_name %}
-            endpoint: <code>{% url content.app_name 1 %}</code>
-            {%else%}
-            endpoint: <code>{% url content.app_name %}</code>
-            {% endif %}
+            <button type="button" class="btn btn-primary btn-sm me-2 copy-link-btn" onclick="copyToClipboard(this)">
+                Copy Link
+            </button>
+            <code class="api-link">
+                    {% if "-detail" in content.app_name %}
+                        {% url content.app_name 1 %}
+                        {%else%}
+                        {% url content.app_name %}
+                        {% endif %}
+                    </code>
         </p>
         {%endif%}
     </div>

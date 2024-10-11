@@ -2,6 +2,7 @@
 
 from quick_docs_drf.utils import utils
 from quick_docs_drf.utils.context_menu import get_contexts
+from quick_docs_drf.menu_context import _quick_docs_menu
 
 
 def generate_documentation_page_context_data(self):
@@ -17,6 +18,6 @@ def generate_documentation_page_context_data(self):
         "project_license": utils.get_project_license(),
         "api_url": utils.get_api_url(),
         "social_media": utils.get_social_media(),
-        "menu_context": menu_context,
+        "menu_context": _quick_docs_menu.get_context_menu(),
         "viewset_context": viewset_context,
     }

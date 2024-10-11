@@ -12,6 +12,7 @@ function docsAjaxRequest(type, url, data, callBack, errorHandle) {
     data: data,
     headers: {
       "X-CSRFToken": csrfToken,
+      Authorization: window.localStorage.getItem("Authorization"),
     },
     success: function (response, status, xhr) {
       if (xhr.status != 204) {

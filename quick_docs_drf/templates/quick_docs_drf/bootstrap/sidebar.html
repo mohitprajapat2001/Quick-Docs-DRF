@@ -8,28 +8,6 @@
     <div class="mt-3 overflow-auto" style="height: 100vh;scrollbar-width:none">
         <div class="list-group list-group-flush">
             <div class="accordion" id="accordionExample">
-                {% if viewset_context %}
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#viewsets" aria-controls="viewsets" aria-expanded="false">
-                            Available Viewsets Details
-                        </button>
-                    </h2>
-                    <div id="viewsets" class="accordion-collapse collapse show">
-                        <div class="accordion-body">
-                            <ul class="list-group">
-                                {% for context in viewset_context%}
-                                <a href="#{{context.name}}"
-                                    class="list-group-item list-group-item-action text-uppercase">
-                                    {{context.name}}
-                                </a>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
                 {% for context in menu_context %}
                 {% if context.app_name == "api-root" %}
                 <div class="accordion-item">
@@ -46,7 +24,10 @@
                             <ul class="list-group">
                                 <a href="#{{context.app_name}}"
                                     class="list-group-item list-group-item-action text-uppercase">
-                                    GET <code class="text-lowercase">{% url context.app_name %}</code>
+                                    <span class="text-uppercase badge text-bg-primary">
+                                        GET
+                                    </span>
+                                    <code class="text-lowercase">{% url context.app_name %}</code>
                                 </a>
                             </ul>
                         </div>
@@ -67,7 +48,33 @@
                             <ul class="list-group">
                                 {% for action in context.app_actions %}
                                 <a href="#{{context.app_name}}"
-                                    class="list-group-item list-group-item-action text-uppercase">{{action}}</a>
+                                    class="list-group-item list-group-item-action align-items-center text-uppercase">
+                                    {% if action == "list" %}
+                                    <code class="text-uppercase badge text-bg-primary">
+                                    GET
+                                    </code>
+                                    {% elif action == "create" %}
+                                    <code class="text-uppercase badge text-bg-success">
+                                    POST
+                                    </code>
+                                    {% elif action == "update" %}
+                                    <code class="text-uppercase badge text-bg-warning">
+                                    PUT
+                                    </code>
+                                    {% elif action == "partial_update" %}
+                                    <code class="text-uppercase badge text-bg-info">
+                                    PATCH
+                                    </code>
+                                    {% elif action == "retrieve" %}
+                                    <code class="text-uppercase badge text-bg-primary">
+                                    GET
+                                    </code>
+                                    {% elif action == "destroy" %}
+                                    <code class="text-uppercase badge text-bg-danger">
+                                    DELETE
+                                    </code>
+                                    {% endif %}
+                                    <span class="font-monospace fs-6 fw-light">{{action}}</span></a>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -105,6 +112,28 @@
                         </div>
                     </div>
                 </div>
+                {% if viewset_context %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#viewsets" aria-controls="viewsets" aria-expanded="false">
+                            Available Viewsets Details
+                        </button>
+                    </h2>
+                    <div id="viewsets" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <ul class="list-group">
+                                {% for context in viewset_context%}
+                                <a href="#{{context.name}}"
+                                    class="list-group-item list-group-item-action text-uppercase">
+                                    {{context.name}}
+                                </a>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>

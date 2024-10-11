@@ -39,8 +39,35 @@
                     <ul>
                         {% for action in context.app_actions %}
                         <li>
-                            <a href="#{{context.app_name}}">
-                                {{action}}
+                            <a href="#{{context.app_name}}"
+                                class="list-group-item list-group-item-action align-items-center text-uppercase">
+                                {% if action == "list" %}
+                                <code class="uppercase badge badge-primary">
+                                        GET
+                                    </code>
+                                {% elif action == "create" %}
+                                <code class="uppercase badge badge-accent">
+                                        POST
+                                    </code>
+                                {% elif action == "update" %}
+                                <code class="uppercase badge badge-warning">
+                                        PUT
+                                    </code>
+                                {% elif action == "partial_update" %}
+                                <code class="uppercase badge badge-info">
+                                        PATCH
+                                    </code>
+                                {% elif action == "retrieve" %}
+                                <code class="uppercase badge badge-primary">
+                                        GET
+                                    </code>
+                                {% elif action == "destroy" %}
+                                <code class="uppercase badge badge-error">
+                                        DELETE
+                                    </code>
+
+                                {% endif %}
+                                <span class="text-sm capitalize font-light">{{action}}</span>
                             </a>
                         </li>
                         {% endfor %}

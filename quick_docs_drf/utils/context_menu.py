@@ -56,7 +56,11 @@ def viewset_context():
                 "permission_classes": [
                     permission.__name__ for permission in viewset.permission_classes
                 ],
-                "pagination_class": viewset.pagination_class.__name__,
+                "pagination_class": (
+                    viewset.pagination_class.__name__
+                    if viewset.pagination_class
+                    else None
+                ),
                 "authentication_classes": [
                     authentication.__name__
                     for authentication in viewset.authentication_classes

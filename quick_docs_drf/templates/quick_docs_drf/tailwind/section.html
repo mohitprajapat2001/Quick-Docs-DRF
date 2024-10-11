@@ -103,11 +103,17 @@
         <h2 class="card-title">{{content.model}}</h2>
         <p class="card-text">{{content.docs}}</p>
         <div>
-            {% if "-detail" in content.app_name %}
-            endpoint: <code class="kbd text-secondary">{% url content.app_name 1 %}</code>
-            {%else%}
-            endpoint: <code class="kbd text-secondary">{% url content.app_name %}</code>
+            <button type="button" class="btn btn-primary btn-sm me-2 capitalize copy-link-btn"
+                onclick="copyToClipboard(this)">
+                Copy Link
+            </button>
+            <code class="kbd text-secondary">
+                {% if "-detail" in content.app_name %}   
+                {% url content.app_name 1 %}
+                {%else%}
+                {% url content.app_name %}
             {% endif %}
+            </code>
 
         </div>
         {%for action in content.app_actions%}
@@ -119,11 +125,17 @@
         <h2 class="card-title">{{content.name}}</h2>
         <p class="card-text">{{content.docs}}</p>
         <p>
-            {% if "-detail" in content.app_name %}
-            endpoint: <code class="kbd text-secondary">{% url content.app_name 1 %}</code>
-            {%else%}
-            endpoint: <code class="kbd text-secondary">{% url content.app_name %}</code>
+            <button type="button" class="btn btn-primary me-2 text-capitalize copy-link-btn"
+                onclick="copyToClipboard(this)">
+                Copy Link
+            </button>
+            <code class="kbd text-secondary">
+                {% if "-detail" in content.app_name %}  
+                {% url content.app_name 1 %}
+                {%else%}
+                {% url content.app_name %}
             {% endif %}
+            </code>
         </p>
     </div>
     {%endif%}
