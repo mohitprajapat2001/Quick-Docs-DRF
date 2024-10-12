@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from quick_docs.models import Blog
+from django.contrib.auth.models import User
 
 
 class DynamicFieldsModelSerializer(serializers.ModelSerializer):
@@ -18,6 +19,12 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
             existing = set(self.fields)
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username", "email", "first_name", "last_name"]
 
 
 class BlogSerializer(DynamicFieldsModelSerializer):

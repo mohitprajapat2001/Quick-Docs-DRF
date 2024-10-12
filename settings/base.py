@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "quick_docs",
+    "drf_spectacular",
     "quick_docs_drf",
     "rest_framework",
     "rest_framework_extensions",
@@ -128,7 +129,9 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.AllowAny",
     ],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 100,
+    "PAGE_SIZE": 10,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_THROTTLE_RATES": {"anon": "100/day", "user": "1000/day"},
 }
 
 # Quick Docs DRF Configuration
@@ -137,12 +140,28 @@ QUICK_DOCS_DRF = {
     "DESCRIPTION": "Quick Docs DRF is a simple and easy-to-use documentation generator for Django REST Framework.",
     "VERSION": "1.0.0",
     "AUTHOR": "Mohit Prajapat",
-    "LICENSE": "MIT",
+    "AUTHOR_EMAIL": "mohit.prajapat@trootech.com",
     "API_URL": "/api/",
-    "API_VERSION": "v1",
-    "API_PREFIX": "api",
-    "API_DESCRIPTION": "Quick Docs DRF API",
-    "API_LICENSE": "MIT",
     "BASE_URL": "quick_docs.urls",
-    "BASE_ROUTER_NAME": "router",
+    "BASE_ROUTER_NAME": "quick_docs.urls.router",
+    "VIEWSET_LISTS": [
+        "quick_docs.views.BlogViewSet",
+        "quick_docs.views.UserViewSet",
+        "quick_docs.views.NewUserViewSet",
+    ],
+    # "TEMPLATE_STYLE": "tailwind",
+    "SOCIAL_MEDIA": {
+        "FACEBOOK": "itsmohit.codes",
+        "INSTAGRAM": "itsmohit.codes",
+        "GITHUB": "mohit-trootech",
+        "LINKEDIN": "mohitprajapat2001",
+        "X": "itsmohit.codes",
+    },
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Your Project API",
+    "DESCRIPTION": "Your project description",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
