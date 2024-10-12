@@ -14,7 +14,8 @@
                 No parameters required
             </div>
             {% elif app == "list" %}
-            <table class="table">
+            {% if content.pagination %}
+            <table class="table mb-0 pb-0">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
@@ -22,18 +23,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% if content.pagination %}
                     <tr>
                         <th scope="row">Page</th>
                         <td>
                             Required <span class="badge text-bg-primary">query</span>
                         </td>
                     </tr>
-                    {% endif %}
                 </tbody>
             </table>
             {% else %}
-            <table class="table">
+            <div class="alert text-bg-primary m-0 px-3 py-2 d-flex align-items-center justify-content-center m-3"
+                role="alert">
+                No parameters required
+            </div>
+            {% endif %}
+            {% else %}
+            <table class="table mb-0 pb-0">
                 <thead>
                     <tr>
                         <th scope="col">Name</th>

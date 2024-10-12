@@ -16,7 +16,3 @@ VERSION = __version__
 # Default datetime & langugae formats
 TIME_ZONE = "Asia/Kolkata"
 LANGUGAE_CODE = "en-us"
-
-# Quick Imports
-from quick_docs_drf.field_types import FieldTypes
-from quick_docs_drf.menu_context import QuickDocsMenu

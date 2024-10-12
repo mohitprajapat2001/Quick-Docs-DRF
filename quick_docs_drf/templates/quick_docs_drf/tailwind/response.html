@@ -3,17 +3,17 @@
         <tr>
             <th scope="row">Code</th>
             <td>
-                {% if app == 'list' %}
+                {% if action == 'list' %}
                 200
-                {% elif app == 'create' %}
+                {% elif action == 'create' %}
                 201
-                {% elif app == 'retrieve' %}
+                {% elif action == 'retrieve' %}
                 200
-                {% elif app == 'update' %}
+                {% elif action == 'update' %}
                 200
-                {% elif app == 'partial_update' %}
+                {% elif action == 'partial_update' %}
                 200
-                {% elif app == 'destroy' %}
+                {% elif action == 'destroy' %}
                 204
                 {% endif %}
             </td>
@@ -21,17 +21,17 @@
         <tr>
             <th scope="row">Description</th>
             <td>
-                {% if app == 'list' %}
+                {% if action == 'list' %}
                 Success
-                {% elif app == 'create' %}
+                {% elif action == 'create' %}
                 Created
-                {% elif app == 'retrieve' %}
+                {% elif action == 'retrieve' %}
                 Success
-                {% elif app == 'update' %}
+                {% elif action == 'update' %}
                 Success
-                {% elif app == 'partial_update' %}
+                {% elif action == 'partial_update' %}
                 Success
-                {% elif app == 'destroy' %}
+                {% elif action == 'destroy' %}
                 No Content
                 {% endif %}
             </td>
@@ -39,7 +39,7 @@
         <tr>
             <th scope="row">Data</th>
             <td>
-                {% if app == 'list' %}
+                {% if action == 'list' %}
                 {% if content.pagination %}
                 <pre style="white-space: pre-wrap;" class="code lh-1 fw-light">
 {
@@ -61,7 +61,7 @@
 {%endfor%}
 }</pre>
                 {%endif%}
-                {% elif app == 'destroy' %}
+                {% elif action == 'destroy' %}
                 No response body
                 {% else %}
                 <pre class="code lh-1 fw-light">

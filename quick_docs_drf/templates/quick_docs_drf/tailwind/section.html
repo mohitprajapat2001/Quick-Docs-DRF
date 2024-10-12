@@ -3,21 +3,88 @@
         {{project_name}}
     </h1>
     <p class="my-5 text-lg">{{project_description}}</p>
-    <p class="flex">
-        {%if project_version%}
-        <span class="badge badge-primary ms-3">{{project_version}}
-        </span>
-        {%endif%}
-        {%if project_author%}
-        <span class="badge badge-primary ms-3">{{project_author}}
-        </span>
-        {%endif%}
-        {%if api_url%}
-        <span class="badge badge-primary ms-3">{{api_url}}
-        </span>
-        {%endif%}
-    </p>
+    <div class="flex justify-between items-center">
+        <p>
+            {%if project_version%}
+            <span class="badge badge-primary ms-3">{{project_version}}
+            </span>
+            {%endif%}
+            {%if project_author%}
+            <span class="badge badge-primary ms-3">{{project_author}}
+            </span>
+            {%endif%}
+            {%if api_url%}
+            <span class="badge badge-primary ms-3">{{api_url}}
+            </span>
+            {%endif%}
+        </p>
+        <button onclick="authorize_modal.showModal()" class="btn  justify-end capitalize" id="authorizeModalButton">
+            Authorize
+        </button>
+    </div>
 </header>
+{% for content in menu_context %}
+<div class="card mb-5 border shadow-xl" id="{{content.app_name}}">
+    {% if content.model %}
+    <div class="card-body">
+        <h2 class="card-title">{{content.model}}</h2>
+        <p class="card-text">{{content.docs}}</p>
+        <div>
+            <button type="button" class="btn btn-primary btn-sm me-2 capitalize copy-link-btn"
+                onclick="copyToClipboard(this)">
+                Copy Link
+            </button>
+            <code class="kbd text-secondary">
+                {% if "-detail" in content.app_name %}   
+                {% url content.app_name 1 %}
+                {%else%}
+                {% url content.app_name %}
+            {% endif %}
+            </code>
+
+        </div>
+        <div role="tablist" class="tabs tabs-boxed capitalize">
+            {%for action in content.app_actions%}
+            <input type="radio" name="{{content.app_name}}" role="tab" class="tab" aria-label="{{action}}" />
+            <div role="tabpanel" class="tab-content p-4 rounded">
+                {% if action == 'list' %}
+                {% include 'quick_docs_drf/tailwind/url-info.html' %}
+                {%elif action == 'create' %}
+                {% include 'quick_docs_drf/tailwind/url-info.html' %}
+                {%elif action == 'retrieve' %}
+                {% include 'quick_docs_drf/tailwind/url-info.html' %}
+                {%elif action == 'update' %}
+                {% include 'quick_docs_drf/tailwind/url-info.html' %}
+                {%elif action == 'partial_update' %}
+                {% include 'quick_docs_drf/tailwind/url-info.html' %}
+                {%elif action == 'destroy' %}
+                {% include 'quick_docs_drf/tailwind/url-info.html' %}
+                {%endif%}
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    {% else %}
+    <div class="card-body">
+        <h2 class="card-title">{{content.name}}</h2>
+        <p class="card-text">{{content.docs}}</p>
+        <p>
+            <button type="button" class="btn btn-primary me-2 text-capitalize copy-link-btn"
+                onclick="copyToClipboard(this)">
+                Copy Link
+            </button>
+            <code class="kbd text-secondary">
+                {% if "-detail" in content.app_name %}  
+                {% url content.app_name 1 %}
+                {%else%}
+                {% url content.app_name %}
+            {% endif %}
+            </code>
+        </p>
+    </div>
+    {%endif%}
+</div>
+{%endfor%}
 {% for context in viewset_context%}
 <div class="card mb-5 border shadow-xl" id="{{context.name}}">
     <div class="card-body">
@@ -94,51 +161,6 @@
             </table>
         </div>
     </div>
-</div>
-{%endfor%}
-{% for content in menu_context %}
-<div class="card mb-5 border shadow-xl" id="{{content.app_name}}">
-    {% if content.model %}
-    <div class="card-body">
-        <h2 class="card-title">{{content.model}}</h2>
-        <p class="card-text">{{content.docs}}</p>
-        <div>
-            <button type="button" class="btn btn-primary btn-sm me-2 capitalize copy-link-btn"
-                onclick="copyToClipboard(this)">
-                Copy Link
-            </button>
-            <code class="kbd text-secondary">
-                {% if "-detail" in content.app_name %}   
-                {% url content.app_name 1 %}
-                {%else%}
-                {% url content.app_name %}
-            {% endif %}
-            </code>
-
-        </div>
-        {%for action in content.app_actions%}
-        <p class="bg-base-300 p-3 rounded-md">{{action}}</p>
-        {%endfor%}
-    </div>
-    {% else %}
-    <div class="card-body">
-        <h2 class="card-title">{{content.name}}</h2>
-        <p class="card-text">{{content.docs}}</p>
-        <p>
-            <button type="button" class="btn btn-primary me-2 text-capitalize copy-link-btn"
-                onclick="copyToClipboard(this)">
-                Copy Link
-            </button>
-            <code class="kbd text-secondary">
-                {% if "-detail" in content.app_name %}  
-                {% url content.app_name 1 %}
-                {%else%}
-                {% url content.app_name %}
-            {% endif %}
-            </code>
-        </p>
-    </div>
-    {%endif%}
 </div>
 {%endfor%}
 {% if project_author_email %}

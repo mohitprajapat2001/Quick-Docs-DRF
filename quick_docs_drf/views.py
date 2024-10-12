@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from typing import Any
-from quick_docs_drf.utils import context as context_utils
+from quick_docs_drf import context as context_utils
 
 
 class DocumentationView(TemplateView):

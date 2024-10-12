@@ -35,7 +35,6 @@ class QuickDocsMenu:
                     viewset = url.callback.cls
                     self.app_name.add(url.name)
                     model = viewset.queryset.model
-
                     # Generate Context Dict
                     self.context.append(
                         {
@@ -55,7 +54,7 @@ class QuickDocsMenu:
                             ),
                         }
                     )
-            except AttributeError as err:
+            except AttributeError:
                 # AttibuteError means API Root View
                 self.context.append(
                     {

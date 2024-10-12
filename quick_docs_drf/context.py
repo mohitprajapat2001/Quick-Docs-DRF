@@ -1,13 +1,12 @@
 """Generate Documentation Page Context Data"""
 
 from quick_docs_drf.utils import utils
-from quick_docs_drf.utils.context_menu import get_contexts
 from quick_docs_drf.menu_context import _quick_docs_menu
+from quick_docs_drf.viewset_context import _quick_docs_viewsets
 
 
 def generate_documentation_page_context_data(self):
     """Generate Documentation Page Context Data"""
-    menu_context, viewset_context = get_contexts()
     return {
         "template_style": utils.get_template_styling(),
         "project_name": utils.get_project_name(),
@@ -19,5 +18,5 @@ def generate_documentation_page_context_data(self):
         "api_url": utils.get_api_url(),
         "social_media": utils.get_social_media(),
         "menu_context": _quick_docs_menu.get_context_menu(),
-        "viewset_context": viewset_context,
+        "viewset_context": _quick_docs_viewsets.get_context_viewsets(),
     }
