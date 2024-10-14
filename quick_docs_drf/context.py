@@ -2,11 +2,13 @@
 
 from quick_docs_drf.utils import utils
 from quick_docs_drf.menu_context import _quick_docs_menu
-from quick_docs_drf.viewset_context import _quick_docs_viewsets
+from quick_docs_drf.viewset_context import QuickDocsViewsets
 
 
 def generate_documentation_page_context_data(self):
     """Generate Documentation Page Context Data"""
+    _quick_docs_viewsets = QuickDocsViewsets()
+
     return {
         "template_style": utils.get_template_styling(),
         "project_name": utils.get_project_name(),

@@ -149,7 +149,7 @@ QUICK_DOCS_DRF = {
         "quick_docs.views.UserViewSet",
         "quick_docs.views.NewUserViewSet",
     ],
-    "TEMPLATE_STYLE": "tailwind",
+    # "TEMPLATE_STYLE": "tailwind",
     "SOCIAL_MEDIA": {
         "FACEBOOK": "itsmohit.codes",
         "INSTAGRAM": "itsmohit.codes",

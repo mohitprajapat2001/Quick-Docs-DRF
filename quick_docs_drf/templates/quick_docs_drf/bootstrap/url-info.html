@@ -69,4 +69,18 @@
             {% include 'quick_docs_drf/bootstrap/response.html' %}
         </div>
     </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#{{content.app_name}}-{{app}}-three" aria-expanded="false"
+                aria-controls="{{content.app_name}}-{{app}}-three">
+                Options
+            </button>
+        </h2>
+        <div id="{{content.app_name}}-{{app}}-three" class="accordion-collapse collapse">
+            <div {% if "-detail" in content.app_name %}
+                onloadeddata="docsOptionsRequestHandle('{% url content.app_name 1 %}')" {%else%}
+                onloadeddata="docsOptionsRequestHandle('{% url content.app_name %}')" {%endif%}>Hello</div>
+        </div>
+    </div>
 </div>

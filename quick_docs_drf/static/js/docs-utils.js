@@ -47,3 +47,10 @@ $(document).ready(() => {
     $("#authorizeModalButton").html("Authorized");
   }
 });
+
+function docsOptionsRequestHandle(url) {
+  docsOptionsRequest(url, docsOptionsRequestResponseHandler);
+}
+function docsOptionsRequestResponseHandler(response) {
+  console.log(response.responseJSON);
+}

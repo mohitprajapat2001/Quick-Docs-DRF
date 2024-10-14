@@ -4,10 +4,6 @@ from django.utils.module_loading import import_string
 from quick_docs_drf.settings import DEFAULT
 
 
-# Constant to indicate all fields
-ALL = "__all__"
-
-
 class QuickDocsViewsets:
     """
     Generate Quick Docs Menu Context
@@ -55,6 +51,3 @@ class QuickDocsViewsets:
                 }
             )
         return self.context
-
-
-_quick_docs_viewsets = QuickDocsViewsets()
